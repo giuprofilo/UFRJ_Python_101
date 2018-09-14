@@ -44,9 +44,10 @@ def ex3_concatena(str1, str2):
 # exceto que o elemento da posi¸c˜ao i deve ser substitu´ıdo pelo caractere x.
 
 def text_char(str1, x, i):
-    str1[i] = x
-    return str1
-   # return str1[0:i] + x + str1[i + 1:]
+    LS = i-len(str1)
+    LI = i-len(str1)+1
+    str2 = str1[:LS]+str(x)+str1[LI:]
+    return str2
 
 # Exercicio 5
 
@@ -81,23 +82,29 @@ def ex6_hashtag(str1):
 # retornar ”defabc”. Assuma que a string passada tem no m´ınimo 3 caracteres.
 
 def ex7_rotation(str1):
-    i = len(str1)//2
-    aux = str1[:i]
-    str1[:i] = str1[i:]
-    str1[i:] = aux
-    return str2
+    return str1[-3::1] + str1[0:-3]
 
 # Exercicio 8
 
 # Escreva uma fun¸c˜ao que receba uma string e um n´umero inteiro x e rotacione
 # a string x posi¸c˜oes para a esquerda. Assuma que a string tem pelo menos x
 # caracteres.
+def rotacao2(str1, i):
+   return str1[i::1] + str1[0:i]
 
 # Exercicio 9
 
 # Escreva uma fun¸c˜ao similar `a anterior, s´o que agora considere que a
 # string passada pode ter qualquer tamanho, inclusive menor que x.
+def rotacao3(str1, i):
+    comprimento = abs(i)
+    if comprimento < len(str1):
+        return str1[i::1] + str1[0:i]
 
+    if comprimento >= len(str1):
+        str2 = i+len(str1)
+        str3 = str1[str2::1] + str1[0:str2]
+        return str3
 # Exercicio 10
 
 # Escreva uma fun¸c˜ao que receba duas datas no formato ”DD/MM/AAAA”,
@@ -107,7 +114,10 @@ def ex7_rotation(str1):
 # tem 365 dias.
 # Exemplo: Se as datas s˜ao ”02/03/1982” e ”01/02/1983”, o total de dias ´e 334.
 
-
+def data(dia,mes,ano,dia2,mes2,ano2):
+#subtração da data final pela data inicial
+    x= (dia2+(mes2*30)+(ano2*365)) - (dia+(mes*30)+(ano*365))
+    print ('Total de dias decorridos: ', x)
        
 if __name__ == '__main__':
     print ("\n\n\n********************************")
